@@ -1,13 +1,15 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "Bayesian Network Compendium"
+author: "Matteo Delucchi"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+github-repo: matteodelucchi/bncompendium
+url: "https://matteodelucchi.github.io/bncompendium/"
+description: "This compendium provides a gentle introduction on bayesian networks and it's applications."
 ---
 
 # Prerequisites
