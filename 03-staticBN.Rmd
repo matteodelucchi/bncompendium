@@ -70,7 +70,7 @@ $$\begin{equation}
 \end{equation}$$
 from the Markov property introduced in Eq. \@ref(eq:markov).
 
-```{r fundamentalconnections, out.width='32.8%', fig.show='hold', fig.cap='Graphical separation, conditional independence, and probability decomposition for the three fundamental connections (top to bottom): converging connection (v-structure), serial connection, and diverging connection. From Scutari, Bayesian Network Analysis with R, fig.2.1'}
+```{r fundamentalconnections, echo=FALSE, fig.cap='Graphical separation, conditional independence, and probability decomposition for the three fundamental connections (top to bottom): converging connection (v-structure), serial connection, and diverging connection. From Scutari, Bayesian Network Analysis with R, fig.2.1', fig.show='hold', out.width='66%', fig.align='center'}
 knitr::include_graphics('images/fundamental_connections.png')
 ```
 
