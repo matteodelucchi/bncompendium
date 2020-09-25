@@ -1,4 +1,5 @@
 book_filename: "bncompendium"
+repo: "https://github.com/matteodelucchi/bncompendium"
 delete_merged_file: true
 language:
   ui:
