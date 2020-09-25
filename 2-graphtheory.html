@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Bayesian Network Compendium</title>
+  <title>Chapter 2 Graph Theory | Bayesian Network Compendium</title>
   <meta name="description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Bayesian Network Compendium" />
+  <meta property="og:title" content="Chapter 2 Graph Theory | Bayesian Network Compendium" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://matteodelucchi.github.io/bncompendium/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="matteodelucchi/bncompendium" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bayesian Network Compendium" />
+  <meta name="twitter:title" content="Chapter 2 Graph Theory | Bayesian Network Compendium" />
   
   <meta name="twitter:description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="acknowledgments.html"/>
+<link rel="prev" href="1-causation-and-inference.html"/>
+<link rel="next" href="3-static-bayesian-networks.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -177,22 +177,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Bayesian Network Compendium</h1>
-<p class="author"><em>Matteo Delucchi</em></p>
-<p class="date"><em>2020-09-25</em></p>
+<div id="graphtheory" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Graph Theory</h1>
+<p>The Simpsons’s Paradox in Section <a href="1-causation-and-inference.html#simpsonsparadox">1.1</a> showed that certain decisions depend on the story behind the data. Graph Theory is the mathematical language to describe these stories.</p>
+<div id="networksvsgraphs" class="section level2">
+<h2><span class="header-section-number">2.1</span> Networks</h2>
+<blockquote>
+<p>TODO: difference between Networks and Graphs.</p>
+</blockquote>
+<!-- (https://bence.ferdinandy.com/2018/05/27/whats-the-difference-between-a-graph-and-a-network/)[https://bence.ferdinandy.com/2018/05/27/whats-the-difference-between-a-graph-and-a-network/] -->
 </div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>To be written.</p>
+<div id="graphterminology" class="section level2">
+<h2><span class="header-section-number">2.2</span> Graph Terminology</h2>
+<p>A graph <span class="math inline">\(G = (V,A) = (V,E)\)</span> is a set of non-empty nodes <span class="math inline">\(V\)</span> and a finite but possibly empty set <span class="math inline">\(A\)</span> of arcs <span class="math inline">\(a=(u,v)=e\)</span> or edges. <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are either ordered or unordered pair of adjacent and connected nodes (neighbors). We distinguish between directed and undirected graphs:</p>
+<p>If <span class="math inline">\((u,v)\)</span> is ordered with <span class="math inline">\(u\)</span> as tail and <span class="math inline">\(v\)</span> as head, the arc is directed from <span class="math inline">\(u \rightarrow v\)</span>. Here we talk about the arc leaving <span class="math inline">\(u\)</span> and entering <span class="math inline">\(v\)</span> or in other words, <span class="math inline">\(a\)</span> is outgoing for <span class="math inline">\(u\)</span> and incoming for <span class="math inline">\(v\)</span>.
+If <span class="math inline">\((u,v)\)</span> is unordered, <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> are just incident on the arc and are often referred as edges or undirected arcs. Edges are denoted as <span class="math inline">\(e \in E\)</span> and represented as <span class="math inline">\(u - v\)</span>.</p>
+<p>We therefore categorize graphs with all arcs being directed as <em>directed graphs</em> <span class="math inline">\(G=(V,A)\)</span>, all edges being undirected as <em>undirected graphs</em> <span class="math inline">\(G=(V,E)\)</span> and with partially directed links as <em>mixed graphs / partially directed graphs</em> <span class="math inline">\(G=(V,A,E)\)</span>.</p>
+<p>We assume in this manuscript, that <span class="math inline">\((u,v)\)</span> uniquely identify an arc. This means, that <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> distinctly incident on each arc and that they are connected by at least one arc. This implies that it is impossible to have a loop between <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>: <span class="math inline">\(u \neq v\)</span>.</p>
+<p>An empty graph has no arcs. In contrast a saturated graph is fully-connected. In between these two extremes, it can be talked about sparse and dense graphs with no clear distinction.</p>
+<p>A path is a sequence of arcs (or edges) connecting two nodes. Paths are denoted with the sequence of vertices <span class="math inline">\(v_1, v_2, v_3, ... , v_n\)</span> where as the first and last vertices are called end-vertex or end-node. A paths is assumed to pass through each arc only once, making them unique arcs.
+In directed graphs, a path leads from <span class="math inline">\(v_1\)</span> to <span class="math inline">\(v_n\)</span> such that all paths follow the same direction. In mixed or undirected graphs, paths can point in either direction.
+We encounter a cyclic path, if <span class="math inline">\(v_1 = v_n\)</span> and we should take particular care in the context of Bayesian network theory!</p>
+<p>A graph with no cycle is of <em>acyclic</em> or <em>topological order</em> and defined as follows: If node <span class="math inline">\(v_i\)</span> precedes <span class="math inline">\(v_j\)</span>, there can be no arc from <span class="math inline">\(v_j\)</span> to <span class="math inline">\(v_i\)</span>. If there is a path leading from <span class="math inline">\(v_i\)</span> to <span class="math inline">\(v_j\)</span>, then <span class="math inline">\(v_i\)</span> is the <em>ancestor</em> of <span class="math inline">\(v_j\)</span> and <span class="math inline">\(v_j\)</span> is the <em>descendant</em> of <span class="math inline">\(v_i\)</span>.
+If the path consists of only a single arc, then the <span class="math inline">\(v_i\)</span> is a <em>parent</em> of <span class="math inline">\(v_j\)</span>, its <em>child</em>.
+We call the first nodes in such a graph <em>root nodes</em> with no incoming arcs and the last ones <em>leaf nodes</em> with at least one incoming arc.</p>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="acknowledgments.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="1-causation-and-inference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-static-bayesian-networks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

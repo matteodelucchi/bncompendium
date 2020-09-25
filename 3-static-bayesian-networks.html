@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Static Bayesian Networks | Bayesian Network Compendium</title>
+  <meta name="description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Static Bayesian Networks | Bayesian Network Compendium" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://matteodelucchi.github.io/bncompendium/" />
+  
+  <meta property="og:description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
+  <meta name="github-repo" content="matteodelucchi/bncompendium" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Static Bayesian Networks | Bayesian Network Compendium" />
+  
+  <meta name="twitter:description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
+  
+
+<meta name="author" content="Matteo Delucchi" />
+
+
+<meta name="date" content="2020-09-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-graphtheory.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<span class="math inline">
+\(\newcommand{\ci}{\perp\!\!\!\perp}\)
+</span>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Bayesian Network Compendium</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+<li class="chapter" data-level="1" data-path="1-causation-and-inference.html"><a href="1-causation-and-inference.html"><i class="fa fa-check"></i><b>1</b> Causation and Inference</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-causation-and-inference.html"><a href="1-causation-and-inference.html#simpsonsparadox"><i class="fa fa-check"></i><b>1.1</b> Simpson’s Paradox</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-graphtheory.html"><a href="2-graphtheory.html"><i class="fa fa-check"></i><b>2</b> Graph Theory</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-graphtheory.html"><a href="2-graphtheory.html#networksvsgraphs"><i class="fa fa-check"></i><b>2.1</b> Networks</a></li>
+<li class="chapter" data-level="2.2" data-path="2-graphtheory.html"><a href="2-graphtheory.html#graphterminology"><i class="fa fa-check"></i><b>2.2</b> Graph Terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html"><i class="fa fa-check"></i><b>3</b> Static Bayesian Networks</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#bayesian-networks-terminology"><i class="fa fa-check"></i><b>3.1</b> Bayesian Networks Terminology</a></li>
+<li class="chapter" data-level="3.2" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#static-bayesian-networks-modelling"><i class="fa fa-check"></i><b>3.2</b> Static Bayesian Networks Modelling</a></li>
+<li class="chapter" data-level="3.3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#constraint-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.3</b> Constraint-Based Structure Learning Algorithms</a></li>
+<li class="chapter" data-level="3.4" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#score-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.4</b> Score-Based Structure Learning Algorithms</a></li>
+<li class="chapter" data-level="3.5" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#hybrid-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.5</b> Hybrid Structure Learning Algorithms</a></li>
+<li class="chapter" data-level="3.6" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#choosing-distributions-conditional-independence-tests-and-network-scores"><i class="fa fa-check"></i><b>3.6</b> Choosing Distributions, Conditional Independence Tests, and Network Scores</a></li>
+<li class="chapter" data-level="3.7" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#parameter-learning"><i class="fa fa-check"></i><b>3.7</b> Parameter Learning</a></li>
+<li class="chapter" data-level="3.8" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#discretization"><i class="fa fa-check"></i><b>3.8</b> Discretization</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://www.zhaw.ch/en/about-us/person/delt/" target="blank">Matteo Delucchi</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesian Network Compendium</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="static-bayesian-networks" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Static Bayesian Networks</h1>
+<p>A catchy abstract comes here.</p>
+<div id="bayesian-networks-terminology" class="section level2">
+<h2><span class="header-section-number">3.1</span> Bayesian Networks Terminology</h2>
+<p>The probabilistic dependencies of a set of random variables <span class="math inline">\(X={X_1, X_2, X_3, ..., X_n}\)</span> can be graphically modelled as a Bayesian network in a directed acyclic graph (DAG) <span class="math inline">\(G=(V,A)\)</span> where each node $v_i V $ corresponds to a random variable <span class="math inline">\(X_i\)</span>. Each node has a conditional probability distribution (CPD) per node, <span class="math inline">\(p(x_i | x_{Pa(i)})\)</span>, specifying the variable’s probability conditioned on its parents’ values. We can then calculate the joint distribution by
+<span class="math display" id="eq:markov">\[\begin{equation}
+\begin{split}
+  p(x_1, ..., x_n) = \prod_{i \in V} p(x_i | x_{Pa(i)}). \\
+  P_X (X) = \prod_{i=1}^{p} P_{X_{i}}(X_i | \Pi_{X_{i}})  
+\end{split}
+\tag{3.1}
+\end{equation}\]</span></p>
+<p>with <span class="math inline">\(\Pi_{X_{i}}\)</span> as the set of the parents of <span class="math inline">\(X_i\)</span>. This representation is allowed through the <em>Markov Property</em> of Bayesian networks (which follows directly from the d-separation explained below) and is a direct application of the chain rule.
+For example, the joint distribution of the Bayesian network in figure <a href="3-static-bayesian-networks.html#fig:baynetgrading">3.1</a> can then be calculated by <span class="math inline">\(p(d,i,g,s,l) = p(d)p(i)p(g|i,d)p(s|i)p(l|g)\)</span>.</p>
+<div class="figure" style="text-align: center"><span id="fig:baynetgrading"></span>
+<img src="images/bayesian_network_grading.png" alt="Simple Bayesian Network from [MIT Lecture](http://people.csail.mit.edu/dsontag/courses/pgm12/slides/lecture2.pdf)" width="66%" />
+<p class="caption">
+Figure 3.1: Simple Bayesian Network from <a href="http://people.csail.mit.edu/dsontag/courses/pgm12/slides/lecture2.pdf">MIT Lecture</a>
+</p>
+</div>
+<p>Two variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are conditional independent given that event <span class="math inline">\(Z\)</span> occurs, if and only if, the fact that even <span class="math inline">\(X\)</span> occurs provides no information on the likelihood of event <span class="math inline">\(Y\)</span> occurring or not and vice versa. This can be formally written as:</p>
+<p><span class="math display">\[\begin{equation}
+  (X \ci Y) | Z \iff Pr(A \cap B |C) = Pr(A|C)Pr(B|C)
+\end{equation}\]</span></p>
+<p>We can represent the dependencies between the variables either by graphical separation (<span class="math inline">\(\ci_G\)</span>) or probabilistic independence (<span class="math inline">\(\ci_P\)</span>)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.
+<span class="math inline">\(\ci_G\)</span> is induced by the absence of a particular arc. Meaning, that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are “separated” by <span class="math inline">\(Z\)</span> and a path is absent if one of the triples along the path are inactive. An example is given on figure <a href="3-static-bayesian-networks.html#fig:fundamentalconnections">3.2</a>: A path in a serial connection or diverging connection is inactive if <span class="math inline">\(C\)</span> is observed (Markov equivalent). A path in a converging connection (v-structure) is inactive if <span class="math inline">\(C\)</span> or one of its descendants is not observed!</p>
+
+<div class="definition">
+<p><span id="def:maps" class="definition"><strong>Definition 3.1  (Maps)  </strong></span></p>
+<p><em>Independency Map (I-map)</em>: A graph G is an I-map of a probabilistic dependence structure <span class="math inline">\(P\)</span> of <span class="math inline">\(X\)</span> if there is a one-to-one correspondence between the random variables in <span class="math inline">\(X\)</span> and the nodes <span class="math inline">\(V\)</span> of <span class="math inline">\(G\)</span>, such that for all disjoint subsets <span class="math inline">\(A, B, C\)</span> of
+<span class="math display" id="eq:defimap">\[\begin{equation} 
+  A\ci_P B|C \Leftarrow A\ci_G B|C .
+  \tag{3.2}
+\end{equation}\]</span></p>
+<p><em>Dependency Map (D-map)</em>: Similarly, <span class="math inline">\(G\)</span> is a D-map of <span class="math inline">\(P\)</span> of <span class="math inline">\(X\)</span> if we have
+<span class="math display" id="eq:defdmap">\[\begin{equation}
+  A\ci_P B|C \Rightarrow A\ci_G B|C .
+  \tag{3.3}
+\end{equation}\]</span></p>
+<em>Perfect Map</em>: Finally, <span class="math inline">\(G\)</span> is said to be a perfect map of <span class="math inline">\(P\)</span> if it is both a D-map and I-map,
+<span class="math display" id="eq:defpmap">\[\begin{equation}
+  A\ci_P B|C \iff A\ci_G B|C ,
+  \tag{3.4}
+\end{equation}\]</span>
+and in this case, <span class="math inline">\(P\)</span> is said to be isomorphic or faithful to G.
+</div>
+
+<p>The <em>directed separation criterion</em> is used to distinguish between the structure of the directed acyclic graph and the conditional independence relationships it represents.</p>
+
+<div class="definition">
+<p><span id="def:d-separation" class="definition"><strong>Definition 3.2  (D-separation)  </strong></span></p>
+<p>If A, B and C are three disjoint subsets of nodes in a DAG graph G, then C is said to <em>d-separate</em> A from B, if along every sequence of arcs between a node in A and a node in B there is a node <span class="math inline">\(v\)</span> satisfying on of the following two conditions:</p>
+<ul>
+<li><span class="math inline">\(v\)</span> has converging arcs<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and none of <span class="math inline">\(v\)</span> or its descendants<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> are in C.</li>
+<li><span class="math inline">\(v\)</span> is in C and does not have converging arcs.
+</div></li>
+</ul>
+<p>Given three nodes and two arcs, we can show the three fundamental connections in figure <a href="3-static-bayesian-networks.html#fig:fundamentalconnections">3.2</a>. In the convergent connection, node <span class="math inline">\(C\)</span> has incoming arcs from <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, thus violating both conditions in Definition <a href="3-static-bayesian-networks.html#eq:defdmap">(3.3)</a>. Therefore, <span class="math inline">\(C\)</span> does not separate <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. This in turn implies that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent given <span class="math inline">\(C\)</span>, and since <span class="math inline">\(\Pi_A = { \varnothing}, \Pi_B = {\varnothing}\)</span>, and <span class="math inline">\(\Pi_C = {A,B}\)</span>, we have
+<span class="math display">\[\begin{equation}
+    P(A,B,C) = P(C|A,B)P(A)P(B)
+\end{equation}\]</span>
+from the Markov property introduced in Eq. <a href="3-static-bayesian-networks.html#eq:markov">(3.1)</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="3-static-bayesian-networks.html#cb1-1"></a>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&#39;images/fundamental_connections.png&#39;</span>)</span></code></pre></div>
+<div class="figure"><span id="fig:fundamentalconnections"></span>
+<img src="images/fundamental_connections.png" alt="Graphical separation, conditional independence, and probability decomposition for the three fundamental connections (top to bottom): converging connection (v-structure), serial connection, and diverging connection. From Scutari, Bayesian Network Analysis with R, fig.2.1" width="32.8%" />
+<p class="caption">
+Figure 3.2: Graphical separation, conditional independence, and probability decomposition for the three fundamental connections (top to bottom): converging connection (v-structure), serial connection, and diverging connection. From Scutari, Bayesian Network Analysis with R, fig.2.1
+</p>
+</div>
+<p>Serial and diverging connections result in equivalent factorization by repeated application of the Bayes’ theorem. This structures are known as <em>Markov equivalent</em> structures.</p>
+<p>A <em>Markov Blanket</em> is the set of nodes that completely d-separates a given node from the rest of the graph:</p>
+
+<div class="definition">
+<span id="def:markovblanket" class="definition"><strong>Definition 3.3  (Markov Blanket)  </strong></span> The <em>Markov blanket</em> of a node <span class="math inline">\(A \in V\)</span> is the minimal subset <span class="math inline">\(S\)</span> of <span class="math inline">\(V\)</span> such that
+<span class="math display">\[\begin{equation}
+        A \ci_P V-S-A | S
+    \end{equation}\]</span>
+In any Bayesian network, the Markov blanket of a node <span class="math inline">\(A\)</span> is the set of the parents of <span class="math inline">\(A\)</span>, the children of <span class="math inline">\(A\)</span>, and all the other nodes sharing a child with <span class="math inline">\(A\)</span>.
+</div>
+
+<blockquote>
+<p><strong>Note</strong>: skipped the part about moral graphs.</p>
+</blockquote>
+</div>
+<div id="static-bayesian-networks-modelling" class="section level2">
+<h2><span class="header-section-number">3.2</span> Static Bayesian Networks Modelling</h2>
+<p>Fitting a Bayesian Network is called learning and is performed in two different steps corresponding to model selection and parameter estimation.</p>
+<ol style="list-style-type: lower-roman">
+<li><em>structure learning</em> identifies the structure of the graph of the Bayesian network with the goal to result as close as possible in a minimal I-map of the dependence structure of the data. The algorithms fall in three categories: constraint-based, score-based and hybrid algorithms. Alternatively, the network structure can be built from domain knowledge and prior information on the data (white- and blacklisting specific arcs).</li>
+<li><em>parameter learning</em> implements the estimation of the parameters of the global distribution by efficiently estimating the parameters of the local distributions implied by the structure obtained in the previous step.</li>
+</ol>
+</div>
+<div id="constraint-based-structure-learning-algorithms" class="section level2">
+<h2><span class="header-section-number">3.3</span> Constraint-Based Structure Learning Algorithms</h2>
+<p>The inductive causation algorithm (Verma and pearl 1991) provides a framework for learning the structure of Bayesian networks using conditional Independence tests and is described in @ref{alginductivecausation}.</p>
+
+<div class="theorem">
+<p><span id="thm:alginductivecausation" class="theorem"><strong>Theorem 3.1  (Inductive Causation Algorithm)  </strong></span></p>
+<ul>
+<li>For each pair of variables <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> in <span class="math inline">\(V\)</span> search for a set <span class="math inline">\(S_{AB} \subset V\)</span> (including <span class="math inline">\(S=\varnothing\)</span>) such that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent given <span class="math inline">\(S_{AB}\)</span> and <span class="math inline">\(A,B \notin S_{AB}\)</span>.<br />
+If there is no such a set, place an undirected arc between <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.<br />
+</li>
+<li>For each pair of non-adjacent variables <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with a common neighbour <span class="math inline">\(C\)</span>, check whether <span class="math inline">\(C\in S_{AB}\)</span>.<br />
+If this is not true, set the direction of the arcs <span class="math inline">\(A-C\)</span> and <span class="math inline">\(C-B\)</span> to <span class="math inline">\(A \rightarrow C\)</span> and <span class="math inline">\(C \leftarrow B\)</span>.<br />
+</li>
+<li>Set the direction of arcs which are still undirected by applying recursively the following two rules:
+<ul>
+<li>if <span class="math inline">\(A\)</span> is adjacent to <span class="math inline">\(B\)</span> and there is a strictly directed path from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> (a path leading from <span class="math inline">\(A\)</span> to <span class="math inline">\(B\)</span> containing no undirected arcs) then set the direction of <span class="math inline">\(A-B\)</span> to <span class="math inline">\(A\rightarrow B\)</span><br />
+</li>
+<li>if <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not adjacent but <span class="math inline">\(A \rightarrow C\)</span> and <span class="math inline">\(C-B\)</span>, then change the latter to <span class="math inline">\(C\rightarrow B\)</span>.<br />
+</li>
+</ul></li>
+<li>Return the resulting (completed partially) directed acyclic graph
+</div></li>
+</ul>
+<p>First, we backward select the saturated model with a complete graph and prune it based on statistical tests for conditional independence: We identify which pairs of variables are connected by an arc, regardless of its direction. These cannot be independent given any other subset of variables, because they cannot be d-separated.</p>
+<p>Second, we identify all v-structures among all the pairs of nonadjacent nodes <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> with a common neighbor <span class="math inline">\(C\)</span>. V-structures are the only fundamental structures where two adjacent nodes are not independent conditional on the third one. If there is a subset of nodes that contains <span class="math inline">\(C\)</span> and d-separates <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, the three nodes are part of a v-structure centered on <span class="math inline">\(C\)</span>.
+Now, we know the skeleton and the v-structures of the network.</p>
+<p>Third, we identify compelled arcs and orient them recursively to obtain the completed partially DAG (CPDAG) describing the equivalence class identified by the previous steps.</p>
+<p>The first two steps cannot be applied to any real-world problem because of its exponential number of possible conditional independence relationship. This led to the development of improved algorithms: <em>PC</em> (spirtes et al, 2001), <em>Grow-Shrink Markov blanket</em> (Margaritis, 2003), <em>Incremental Association</em> (Tsamardinos et al., 2003) and variations of those.
+They all (except PC) first learn the Markov blanket of each node in the network which simplifies the identification of neighbors of each node and hence also the computational complexity.</p>
+</div>
+<div id="score-based-structure-learning-algorithms" class="section level2">
+<h2><span class="header-section-number">3.4</span> Score-Based Structure Learning Algorithms</h2>
+<p>They are also known as <em>search-and-score algorithms</em> are a general heuristic optimization technique. Each candidate network is assigned a network score reflecting its goodness of fit, which the algorithm then attempts to maximize. There are three main classes of such algorithms:
+<em>Greedy search</em> algorithms (i.e. hill-climbing with random restarts or tabu search) explore the search space starting from a network structure (usually the empty graph and adding, deleting or reversing one arc at a time until the score can no longer be improved.</p>
+
+<div class="theorem">
+<p><span id="thm:alghc" class="theorem"><strong>Theorem 3.2  (Hill-Climbing Algorithm)  </strong></span></p>
+<ul>
+<li>Choose a network structure <span class="math inline">\(G\)</span> over <span class="math inline">\(V\)</span> which is usually empty (but not necessarily).
+<ul>
+<li>Compute the score of <span class="math inline">\(G\)</span>, denoted as <span class="math inline">\(Score_G = Score(G)\)</span>.</li>
+<li>Set <span class="math inline">\(maxscore = Score_G\)</span></li>
+<li>While <span class="math inline">\(maxscore\)</span> increases:
+<ul>
+<li>for every possible arc addition, deletion or reversal not resulting in a cyclic network:
+<ul>
+<li>compute the score of the modified network <span class="math inline">\(G*\)</span>, <span class="math inline">\(Score_{G*} = Score(G*)\)</span>:</li>
+<li>if <span class="math inline">\(Score_{G*} &gt; Score_G\)</span>, set <span class="math inline">\(G = G*\)</span> and <span class="math inline">\(Score_G = Score_{G*}\)</span></li>
+</ul></li>
+</ul></li>
+<li>update <span class="math inline">\(maxscore\)</span> with the new value of <span class="math inline">\(Score_G\)</span>.</li>
+</ul></li>
+<li>Return the directed acyclic graph <span class="math inline">\(G\)</span>.
+</div></li>
+</ul>
+<p><em>Genetic</em> algorithms, mimic natural evolution through iteratively selecting the “fittest” model and the hybridization of their characteristics. The search space is explored through combining the structure of two networks (crossover) and introducing random alterations (mutation stochastic operators).</p>
+<p><em>Simulated annealing</em> performs a stochastic local search by accepting changes that increase the network score and allowing changes that decrease it with a probability inversely proportional to the score decrease.
+Russel and Norvig (2009) provide comprehensive review of the heuristics.</p>
+</div>
+<div id="hybrid-structure-learning-algorithms" class="section level2">
+<h2><span class="header-section-number">3.5</span> Hybrid Structure Learning Algorithms</h2>
+<p>They combine constraint-based and score-based algorithms to offset their weaknesses and produce reliable network structures in many situations. Well known members of this family are <em>Sparse Candidate algorithm</em> by Friedman et al (1999b) and <em>Max-Min Hill-Climbing algorithm</em> by Tsamardinos et al (2006).</p>
+
+<div class="theorem">
+<p><span id="thm:algsparsecan" class="theorem"><strong>Theorem 3.3  (Sparse Candidate Algorithm)  </strong></span></p>
+<ul>
+<li>Choose a network structure <span class="math inline">\(G\)</span> over <span class="math inline">\(V\)</span> which is usually empty (but not necessarily).
+<ul>
+<li>While not converged:
+<ul>
+<li><strong>restrict:</strong> select a set <span class="math inline">\(C_i\)</span> of candidate parents for each node <span class="math inline">\(X_i \in V\)</span>, which must include the parents of <span class="math inline">\(X_i\)</span> in <span class="math inline">\(G\)</span>;</li>
+<li><strong>maximize:</strong> find the network structure <span class="math inline">\(G*\)</span> that maximizes <span class="math inline">\(Score(G*)\)</span> among the networks in which the parents of each node <span class="math inline">\(X_i\)</span> are included in the corresponding set <span class="math inline">\(C_i\)</span>,</li>
+<li>set <span class="math inline">\(G = G*\)</span></li>
+</ul></li>
+</ul></li>
+<li>Return the directed acyclic graph G
+</div></li>
+</ul>
+<p>These algorithms basically have two steps: (i) in the first <em>restrict</em> state, the candidate set for the parents of each node <span class="math inline">\(X_i\)</span> is reduced from the whole node set <span class="math inline">\(V\)</span> to a smaller set <span class="math inline">\(C_i \subset V\)</span> of nodes whose behavior has been shown to be related in some way to that of <span class="math inline">\(X_i\)</span> resulting in a smaller and more regular search space. Then the network is searched that (ii) <em>maximizes</em> a given score function, subject to the constraints imposed by the <span class="math inline">\(C_i\)</span> sets.</p>
+<p>In the Sparse Candidate Algorithm the two steps are repeated until there is no change in the network or the network score does not improve anymore. In the Max-Min Hill-Climbing algorithm, restrict and maximize are performed only once.</p>
+</div>
+<div id="choosing-distributions-conditional-independence-tests-and-network-scores" class="section level2">
+<h2><span class="header-section-number">3.6</span> Choosing Distributions, Conditional Independence Tests, and Network Scores</h2>
+<p>There are two common cases for global and local distribution functions:</p>
+<ul>
+<li><em>Multinomial variables:</em> are used for categorical/discrete data sets (discrete case). Global and local distribution are multinomial. Local distributions are represented in conditional probability tables (CPTs). This is the most common assumption and corresponding Bayesian networks are referred to as discrete Bayesian networks.</li>
+<li><em>Multivariate normal variables:</em> are used for continuous data sets (continuous case). The global distribution is multivariate normal, whereas the local distributions are univariate normal random variables linked by linear constraints. The corresponding Bayesian networks are referred to as Gaussian Bayesian networks.</li>
+</ul>
+<p>The choice of the global and local distributions determines which conditional independence tests and which network scores can be used to learn the structure of the Bayesian network.
+For discrete data, conditional independence tests and network scores are functions of the CPTs implied by the graphical structure of the network through the observed frequencies <span class="math inline">\(\{ n_{ijk}, i = 1, ..., R, j = 1, ..., C, k=1, ..., L \}\)</span> for the random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> and all the configurations of the conditioning variables <span class="math inline">\(Z\)</span>.
+Two common conditional Independence tests are:</p>
+<ul>
+<li><em>Mutual Information</em> which is an information-theoretic distance measure:
+<span class="math display">\[\begin{equation}
+      MI(X,Y|Z) = \sum_{i=1}^{R} \sum_{j=1}^{C} \sum_{k=1}^{L} \frac{n_{ijk}}{n} log\frac{n_{ijk}n_{++k}}{n_{i+k}n_{+jk}}
+  \end{equation}\]</span>
+and is proportional by a factor <span class="math inline">\(2n\)</span> (<span class="math inline">\(n\)</span>: sample size) to the log-likelihood ratio test <span class="math inline">\(G^2\)</span> and it is related to the deviance of the tested models.</li>
+<li>_Pearson’s <span class="math inline">\(\chi^2\)</span>} test for contingency tables,
+<span class="math display">\[\begin{equation}
+      \chi^{2}(X,Y|Z) = \sum_{i=1}^{R} \sum_{j=1}^{C} \sum_{k=1}^{L} \frac{(n_{ijk} - m_{ijk})^2}{m_{ijk}}, \text{where } m_{ijk}=\frac{n_{i+k}n_{+jk}}{n_{++k}}
+  \end{equation}\]</span>
+In both cases, there are two ways to test the null hypothesis of independence. Either bey asymptotic <span class="math inline">\(\chi^{2}_{(R-1)(C-1)L}\)</span> distribution or the Monte Carlo permutation approach (Edwards (2000)). Alternatively, Fisher’s exact test and the shrinkage estimator for the mutual information defined by Hausser and Strimmer (2009) are possible.</li>
+</ul>
+<p>Common network scores are the <em>Bayesian Dirichlet equivalent (BDe)</em> and the <em>Bayesian information criterion (BIC)</em>. BDe associates the posterior density with a uniform prior over both the space of the network structures and the parameters of each local distribution. The BIC is a penalized likelihood score defined as:
+<span class="math display">\[\begin{equation}
+    BIC=\sum_{i=1}^{n} log P_{X_i}(X_i | \Pi_{X_i}) - \frac{d}{2}log(n)
+\end{equation}\]</span>
+with <span class="math inline">\(d\)</span> being the number of parameters of the global distribution. The more parameters are included in the model, the more likely it will overfit and this is penalized by a large BIC.</p>
+<p>Conditional independence tests and network score in the continuous case are functions of the partial correlation coefficients <span class="math inline">\(\rho_{XY|Z}\)</span> of <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> given <span class="math inline">\(Z\)</span>. Two common conditional independence tests are the exact <span class="math inline">\(t\)</span> test for Pearson’s correlation coefficient:
+<span class="math display">\[\begin{equation}
+    t(X,Y|Z) = \rho_{XY|Z} \sqrt{\frac{n-2}{q- \rho_{XY|Z}^{2}}}
+\end{equation}\]</span>
+distributed as a Student’s <span class="math inline">\(t\)</span> with <span class="math inline">\(n-|Z|-2\)</span> degrees of freedom and <em>Fisher’s Z</em> test which is a transformation of the linear correlation coefficient with an asymptotic normal distribution defined as
+<span class="math display">\[\begin{equation}
+    Z(X,Y|Z) = \frac{\sqrt{n-|Z|-3}}{2}log\frac{1+\rho_{XY|Z}}{1-\rho_{XY|Z}}.
+\end{equation}\]</span>
+An other option would be the mutual information test defined in Kullback (1968) which is proportional to the corresponding log-likelihood ratio test.</p>
+<p>Common network scores are again BIC but this time defined as
+<span class="math display">\[\begin{equation}
+    BIC=\sum_{i=1}^{n} log f_{X_i}(X_i | \Pi_{X_i}) - \frac{d}{2}log(n)
+\end{equation}\]</span>
+and the <em>Bayesian Gaussian equivalent (BGe)</em> score, the Wishart posterior density of the network associated with a uniform prior over both the space of the network structures and of the parameters of the local distributions.</p>
+</div>
+<div id="parameter-learning" class="section level2">
+<h2><span class="header-section-number">3.7</span> Parameter Learning</h2>
+<p>Given the (learned) structure of the network the task of estimating and updating the parameters of the global distribution is greatly simplified by the application of the Markov property.</p>
+<p>In dynamic programming the <em>Curse of dimensionality</em> is a phenomena that can be observed when the dimensionality increases, the volume of space increases so fast, that the data becomes sparse. In the context of parameter learning, we observe this phenomena because each local distribution has a comparatively small number of parameters to estimate from the sample and estimates are more accurate due to the better ratio between the size of parameter space and the sample size. There exist two approaches to estimate the parameters: <em>maximum likelihood estimation</em> and _Bayesian estimation}.</p>
+<p>The number of parameters of the global distribution is the sum of the number of parameters of the local distributions. To uniquely identify the global distribution not all parameters of the local distributions are required. Because of the conditional independence relationships are encoded in the network structure, large parts of the parameters space are fixed.
+For example, in Gaussian Bayesian networks, partial correlation coefficients involving (conditionally) independent variables are equal to zero by definition, and joint frequencies factorise into marginal ones in multinomial distributions.</p>
+<p>It is, however, common that the sample sizes are much smaller than the number of variables included in the model (i.e. in high-throughput biological data: few ten or hundred observations and thousands of genes). This setting is called “small <span class="math inline">\(n\)</span>, large <span class="math inline">\(p\)</span>”, estimates have a high variability unless particular care is taken in both structure and parameter learnings.</p>
+</div>
+<div id="discretization" class="section level2">
+<h2><span class="header-section-number">3.8</span> Discretization</h2>
+<p>To facilitate learning Bayesian networks from mixed data, we can convert all continuous variables to discrete ones ( <em>discretization</em> or <em>binning</em> ). This completely sidesteps the problem of defining a probabilistic model for the data.
+Discretization is also applied when continuous data violates normality (skewness, heavy tailes, etc.). The discretization intervals (bins) can be choosen in different ways. Often it makes sense to use prior knowledge on the data to define the intervals for each variable to different real-world scenarios (pollutant concentration: absent, dangerous, lethal; age classes: child, adult elderly). This is however not always possible and heuristical methods (Sturges, Freedman-Diaconis or Scott rules) offer a feasible possibility.
+To reduce information loss and balance the accuracy, the number of intervals and boundaries should be choosen one variable at a time and beofre the network structure has been learned (kohavi and Sahami, 1996, Hertemink 2001).
+We can also perform learning and discretization iteratively until no improvement is made (Friedman and Goldszmidt, 1996).
+All these straategies represent different trade-offs between teh accuracy of the discrerte representation of the original data and the computational efficiency of the tranformation.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Two random variables are independent, <span class="math inline">\(X_1 \ci X_2\)</span>, if <span class="math inline">\(p(X_1=x_1, X_2=x_2) = p(X_1=x_1)p(X_2=x_2)\)</span> for all values <span class="math inline">\(x_1 \in X_1\)</span> and <span class="math inline">\(x_2 \in X_2\)</span>.<a href="3-static-bayesian-networks.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>i.e. there are two arcs pointing to <span class="math inline">\(v\)</span> from the adjacent nodes in the path<a href="3-static-bayesian-networks.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>i.e. the nodes that can be reached from <span class="math inline">\(v\)</span><a href="3-static-bayesian-networks.html#fnref3" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-graphtheory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bncompendium.pdf", "bncompendium.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
