@@ -5,6 +5,7 @@ bookdown::gitbook:
       in_header: mathjax_header.html
   config:
     toc:
+      collapse: section
       before: |
         <li><a href="./">Bayesian Network Compendium</a></li>
       after: |
