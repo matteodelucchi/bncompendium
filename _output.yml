@@ -1,5 +1,8 @@
 bookdown::gitbook:
   css: style.css
+  split_by: chapter+number
+  includes:
+      in_header: mathjax_header.html
   config:
     toc:
       before: |
@@ -9,6 +12,7 @@ bookdown::gitbook:
     sharing:
       github: yes
     download: ["pdf", "epub"]
+  md_extensions: +latex_macros
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
