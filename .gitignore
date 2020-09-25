@@ -2,6 +2,7 @@
 _book/
 _bookdown_files/
 **/*.bib
+**/*.html
 
 # R and Rstudio specific files
 .Rproj.user
