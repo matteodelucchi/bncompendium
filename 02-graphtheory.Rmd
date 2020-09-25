@@ -1,0 +1,27 @@
+# Graph Theory {#graphtheory}
+The Simpsons's Paradox in Section \@ref(simpsonsparadox) showed that certain decisions depend on the story behind the data. Graph Theory is the mathematical language to describe these stories. 
+
+## Networks {#networksvsgraphs}
+> TODO: difference between Networks and Graphs.
+
+<!-- (https://bence.ferdinandy.com/2018/05/27/whats-the-difference-between-a-graph-and-a-network/)[https://bence.ferdinandy.com/2018/05/27/whats-the-difference-between-a-graph-and-a-network/] -->
+
+## Graph Terminology {#graphterminology}
+A graph $G = (V,A) = (V,E)$ is a  set of non-empty nodes $V$ and a finite but possibly empty set $A$ of arcs $a=(u,v)=e$ or edges. $u$ and $v$ are either ordered or unordered pair of adjacent and connected nodes (neighbors). We distinguish between directed and undirected graphs: 
+
+If $(u,v)$ is ordered with $u$ as tail and $v$ as head, the arc is directed from $u \rightarrow v$. Here we talk about the arc leaving $u$ and entering $v$ or in other words, $a$ is outgoing for $u$ and incoming for $v$.
+If $(u,v)$ is unordered, $u$ and $v$ are just incident on the arc and are often referred as edges or undirected arcs. Edges are denoted as $e \in E$ and represented as $u - v$.
+
+We therefore categorize graphs with all arcs being directed as _directed graphs_ $G=(V,A)$, all edges being undirected as _undirected graphs_ $G=(V,E)$ and with partially directed links as _mixed graphs / partially directed graphs_ $G=(V,A,E)$.
+
+We assume in this manuscript, that $(u,v)$ uniquely identify an arc. This means, that $u$ and $v$ distinctly incident on each arc and that they are connected by at least one arc. This implies that it is impossible to have a loop between $u$ and $v$: $u \neq v$.
+
+An empty graph has no arcs. In contrast a saturated graph is fully-connected. In between these two extremes, it can be talked about sparse and dense graphs with no clear distinction\footnote{Sparse graphs are usually defined as $O(|E|+|A|) = O(|V|)$}.
+
+A path is a sequence of arcs (or edges) connecting two nodes. Paths are denoted with the sequence of vertices $v_1, v_2, v_3, ... , v_n$ where as the first and last vertices are called end-vertex or end-node. A paths is assumed to pass through each arc only once, making them unique arcs. 
+In directed graphs, a path leads from $v_1$ to $v_n$ such that all paths follow the same direction. In mixed or undirected graphs, paths can point in either direction. 
+We encounter a cyclic path, if $v_1 = v_n$ and we should take particular care in the context of Bayesian network theory!
+
+A graph with no cycle is of _acyclic_ or _topological order_ and defined as follows: If node $v_i$ precedes $v_j$, there can be no arc from $v_j$ to $v_i$. If there is a path leading from $v_i$ to $v_j$, then $v_i$ is the _ancestor_ of $v_j$ and $v_j$ is the _descendant_ of $v_i$. 
+If the path consists of only a single arc, then the $v_i$ is a _parent_ of $v_j$, its _child_.
+We call the first nodes in such a graph _root nodes_ with no incoming arcs and the last ones _leaf nodes_ with at least one incoming arc.

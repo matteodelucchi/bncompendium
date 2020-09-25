@@ -1,0 +1,13 @@
+# Causation and Inference
+Studying causation is important to make sense out of data, guiding decision makers and learn from success and failures. With this logical and mathematical technique we can study the effects of perturbation to systems such as smoking on lung cancer, education on salaries, age on blood pressure.
+For an informed decision we need to understand how and why causes influence their effects. 
+The Simpson's Paradox demonstrates a situation where we need causality additional to classical statistics to make sense out of data.
+
+## Simpson's Paradox {#simpsonsparadox}
+It refers to situation where paradoxically the existence of data in which a statistical association that holds for an entire population is reversed in every subpopulation.
+A group of sick patients are given the option to try a new drug. Among those who took the drug, a lower percentage recovered than among those who did not. Splitting the data by gender, we can observe that more men and more women who take the drug recover than from those who do not take the drug. The drug helps men and women who take the drug but hurts the population - a paradoxon. We could conclude, that if the gender is known, we can prescribe the drug. But this is ridiculous as our lack of knowledge of the patient's gender cannot make the drug harmful.
+To understand this results we need to understand the causal mechanism that generated this results. If we know two more additional facts: (i) Estrogen has a negative effect on recovery which makes women less likely to recover than men (regardless of the drug) and (ii) let's assume that the data shows that women are in general more likely to take the drug than men are. Integrating this information in the decision process, we can understand that if we select a drug user at random, that person is more likely to be a woman and hence less likely to recover than a random person who does not take the drug. In other words, being female is a common cause of both drug taking and failure to recover. 
+As a conclusion, we need to segregate the data by gender before we analyze it. This makes it more specific and more informative than the unsegregated data. 
+We assume that treatment does not cause sex. But there is no way to represent it in the mathematics of standard statistics as it is not possible to represent any causal information in contingency tables on which statistical inference is often based on. We therefore need "extra-statistical" methods to express and interpret causal assumptions.
+
+Let's first define in a metaphoric sense _causation_: $X$ is a cause of $Y$ if $Y$ listens to $X$ and decides its value in response to what it hears.
