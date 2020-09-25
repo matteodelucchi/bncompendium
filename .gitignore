@@ -1,3 +1,9 @@
+# don't push local rendered files in master branch
+_book/
+_bookdown_files/
+**/*.bib
+
+# R and Rstudio specific files
 .Rproj.user
 .Rhistory
 .RData
