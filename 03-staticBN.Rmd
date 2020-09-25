@@ -176,7 +176,7 @@ Two common conditional Independence tests are:
         MI(X,Y|Z) = \sum_{i=1}^{R} \sum_{j=1}^{C} \sum_{k=1}^{L} \frac{n_{ijk}}{n} log\frac{n_{ijk}n_{++k}}{n_{i+k}n_{+jk}}
     \end{equation}$$
     and is proportional by a factor $2n$ ($n$: sample size) to the log-likelihood ratio test $G^2$ and it is related to the deviance of the tested models.
-- _Pearson's $\chi^2$} test for contingency tables,
+- _Pearson's $\chi^2$ _ test for contingency tables,
     $$\begin{equation}
         \chi^{2}(X,Y|Z) = \sum_{i=1}^{R} \sum_{j=1}^{C} \sum_{k=1}^{L} \frac{(n_{ijk} - m_{ijk})^2}{m_{ijk}}, \text{where } m_{ijk}=\frac{n_{i+k}n_{+jk}}{n_{++k}}
     \end{equation}$$
