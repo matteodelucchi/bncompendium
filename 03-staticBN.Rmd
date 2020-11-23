@@ -129,6 +129,16 @@ Third, we identify compelled arcs and orient them recursively to obtain the comp
 The first two steps cannot be applied to any real-world problem because of its exponential number of possible conditional independence relationship. This led to the development of improved algorithms: _PC_ (spirtes et al, 2001), _Grow-Shrink Markov blanket_ (Margaritis, 2003), _Incremental Association_ (Tsamardinos et al., 2003) and variations of those.
 They all (except PC) first learn the Markov blanket of each node in the network which simplifies the identification of neighbors of each node and hence also the computational complexity.
 
+### PC
+Original paper about PC: Spirtes, Glymour, and Scheines (1993)
+Is the well established, unsupervised method if no selection bias, no latent variables and only acyclic relations exist.
+The causal relations are detected through multiple conditional independence tests. The accuracy depends on how the type I error rate $\alpha$ is set a priori. Different methods were proposed on how to tune this hyperparameter automatically:
+Schwarz et al 1978 choose the model with the lowest BIC score by assuming a parametric model. 
+Rathu et al, 2018 proposed a computationally intensive, non-parametric algorithm StARS which runs PC on multiple bootstrapped draws and outputs the $\alpha$ maximizing graph stability.
+OCTs uses cross-validation to evaluate the predictive accuracy of Markov boundaries which have to be unique (Biza et al., 2020). During the cross-validation step of OCTs an other parameter $\alpha$ is introduced.
+AutoPC runs PC twice for each $\alpha$ of a finite, user-specified set of reasonable choices of $\alpha$. The second run is a variant of PC which conditions on subsets of parents from the partially DAG of the first run which will be less time intensive than the first run. Its accuracy is outstanding and the computational time is on the level of BIC for an increasing number of vertices (Strobl 2020). 
+
+
 ## Score-Based Structure Learning Algorithms
 They are also known as _search-and-score algorithms_ are a general heuristic optimization technique. Each candidate network is assigned a network score reflecting its goodness of fit, which the algorithm then attempts to maximize. There are three main classes of such algorithms:
 _Greedy search_ algorithms (i.e. hill-climbing with random restarts or tabu search) explore the search space starting from a network structure (usually the empty graph and adding, deleting or reversing one arc at a time until the score can no longer be improved.
