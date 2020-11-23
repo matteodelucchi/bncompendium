@@ -201,6 +201,12 @@ Two common conditional Independence tests are:
     \end{equation}$$
 In both cases, there are two ways to test the null hypothesis of independence. Either bey asymptotic $\chi^{2}_{(R-1)(C-1)L}$ distribution or the Monte Carlo permutation approach (Edwards (2000)). Alternatively, Fisher's exact test and the shrinkage estimator for the mutual information defined by Hausser and Strimmer (2009) are possible.
 
+### Network Scores
+To score the goodness of a network representing the causal relationships of the variables is dependend on the context.
+
+If the data generation process is known, the resulting structure can be compared to the structure which generated the data (Spirtes 1995). 
+Deep domain knowledge enables edge specific post-evaluation of the network and can reduce the search space by Black- and whitelisting causalities.
+
 Common network scores are the _Bayesian Dirichlet equivalent (BDe)_ and the _Bayesian information criterion (BIC)_. BDe associates the posterior density with a uniform prior over both the space of the network structures and the parameters of each local distribution. The BIC is a penalized likelihood score defined as:
 $$\begin{equation}
     BIC=\sum_{i=1}^{n} log P_{X_i}(X_i | \Pi_{X_i}) - \frac{d}{2}log(n)
