@@ -61,6 +61,11 @@ If A, B and C are three disjoint subsets of nodes in a DAG graph G, then C is sa
   
 - $v$ has converging arcs^[i.e. there are two arcs pointing to $v$ from the adjacent nodes in the path] and none of $v$ or its descendants^[i.e. the nodes that can be reached from $v$] are in C.
 - $v$ is in C and does not have converging arcs.
+
+In more formal words:
+Given a graph containing vertices which correspond to a set of random variables $X$. Two vertices $X_i$ and $X_j$ are _d-connected_ given $W \subseteq X \ \{X_i, X_j \}$ in a DAG if and only if there exists a directed path between $X_i$ and $X_j$ such that every collider and no non-collider is a member of $W$. The vertices are _d-separated_ if they are not d-connected.
+
+
 ```
 
 
