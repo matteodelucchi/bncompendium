@@ -1,0 +1,8 @@
+# Glosary
+_Greedy Algorithm_: Used in optimization problems. Tries to approximate the overall optimal way to solve a problem by making step-wise optimal choices.
+
+_Canonical Form_: Normal, standard way of describing a mathematical object. 
+
+_Latent Variable_: Variable that is inferred from other variables. Not directly observed.
+
+_Parameteric Model_: A statistical model that has all it's information represented in its parameters. Those are the only thing needed to predict future or unknown values.
