@@ -96,7 +96,11 @@ A _Markov Blanket_ is the set of nodes that completely d-separates a given node 
 ## Static Bayesian Networks Modelling
 Fitting a Bayesian Network is called learning and is performed in two different steps corresponding to model selection and parameter estimation.
 
-i) _structure learning_ identifies the structure of the graph of the Bayesian network with the goal to result as close as possible in a minimal I-map of the dependence structure of the data. The algorithms fall in three categories: constraint-based, score-based and hybrid algorithms. Alternatively, the network structure can be built from domain knowledge and prior information on the data (white- and blacklisting specific arcs). 
+i) _structure learning_ identifies the structure of the graph of the Bayesian network with the goal to result as close as possible in a minimal I-map of the dependence structure of the data. 
+The classic methods were based on 
+multiple conditional independence tests that result in a set of DAGs that encompass individual conditional independence relations or 
+on a bayesian approach which searches for the DAG with the highest posterior probability by applying a bayesian scoring metric to the results of a search algorithm (Spirtes 1995).
+The algorithms fall in three categories: constraint-based, score-based and hybrid algorithms. Alternatively, the network structure can be built from domain knowledge and prior information on the data (white- and blacklisting specific arcs). 
 ii) _parameter learning_ implements the estimation of the parameters of the global distribution by efficiently estimating the parameters of the local distributions implied by the structure obtained in the previous step.
 
 ## Constraint-Based Structure Learning Algorithms
