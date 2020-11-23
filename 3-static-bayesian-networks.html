@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Static Bayesian Networks | Bayesian Network Compendium</title>
   <meta name="description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Static Bayesian Networks | Bayesian Network Compendium" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matteo Delucchi" />
 
 
-<meta name="date" content="2020-09-28" />
+<meta name="date" content="2020-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <span class="math inline">
 \(\newcommand{\ci}{\perp\!\!\!\perp}\)
 </span>
@@ -85,14 +87,19 @@
 <li class="chapter" data-level="3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html"><i class="fa fa-check"></i><b>3</b> Static Bayesian Networks</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#bayesian-networks-terminology"><i class="fa fa-check"></i><b>3.1</b> Bayesian Networks Terminology</a></li>
 <li class="chapter" data-level="3.2" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#static-bayesian-networks-modelling"><i class="fa fa-check"></i><b>3.2</b> Static Bayesian Networks Modelling</a></li>
-<li class="chapter" data-level="3.3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#constraint-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.3</b> Constraint-Based Structure Learning Algorithms</a></li>
+<li class="chapter" data-level="3.3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#constraint-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.3</b> Constraint-Based Structure Learning Algorithms</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#pc"><i class="fa fa-check"></i><b>3.3.1</b> PC</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#score-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.4</b> Score-Based Structure Learning Algorithms</a></li>
 <li class="chapter" data-level="3.5" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#hybrid-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.5</b> Hybrid Structure Learning Algorithms</a></li>
-<li class="chapter" data-level="3.6" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#choosing-distributions-conditional-independence-tests-and-network-scores"><i class="fa fa-check"></i><b>3.6</b> Choosing Distributions, Conditional Independence Tests, and Network Scores</a></li>
+<li class="chapter" data-level="3.6" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#choosing-distributions-conditional-independence-tests-and-network-scores"><i class="fa fa-check"></i><b>3.6</b> Choosing Distributions, Conditional Independence Tests, and Network Scores</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#network-scores"><i class="fa fa-check"></i><b>3.6.1</b> Network Scores</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#parameter-learning"><i class="fa fa-check"></i><b>3.7</b> Parameter Learning</a></li>
 <li class="chapter" data-level="3.8" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#discretization"><i class="fa fa-check"></i><b>3.8</b> Discretization</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="4" data-path="4-glosary.html"><a href="4-glosary.html"><i class="fa fa-check"></i><b>4</b> Glosary</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/delt/" target="blank">Matteo Delucchi</a></li>
 
@@ -168,9 +175,12 @@ and in this case, <span class="math inline">\(P\)</span> is said to be isomorphi
 <p>If A, B and C are three disjoint subsets of nodes in a DAG graph G, then C is said to <em>d-separate</em> A from B, if along every sequence of arcs between a node in A and a node in B there is a node <span class="math inline">\(v\)</span> satisfying on of the following two conditions:</p>
 <ul>
 <li><span class="math inline">\(v\)</span> has converging arcs<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and none of <span class="math inline">\(v\)</span> or its descendants<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> are in C.</li>
-<li><span class="math inline">\(v\)</span> is in C and does not have converging arcs.
-</div></li>
+<li><span class="math inline">\(v\)</span> is in C and does not have converging arcs.</li>
 </ul>
+<p>In more formal words:
+Given a graph containing vertices which correspond to a set of random variables <span class="math inline">\(X\)</span>. Two vertices <span class="math inline">\(X_i\)</span> and <span class="math inline">\(X_j\)</span> are <em>d-connected</em> given <span class="math inline">\(W \subseteq X \ \{X_i, X_j \}\)</span> in a DAG if and only if there exists a directed path between <span class="math inline">\(X_i\)</span> and <span class="math inline">\(X_j\)</span> such that every collider and no non-collider is a member of <span class="math inline">\(W\)</span>. The vertices are <em>d-separated</em> if they are not d-connected.</p>
+</div>
+
 <p>Given three nodes and two arcs, we can show the three fundamental connections in figure <a href="3-static-bayesian-networks.html#fig:fundamentalconnections">3.2</a>. In the convergent connection, node <span class="math inline">\(C\)</span> has incoming arcs from <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, thus violating both conditions in Definition <a href="3-static-bayesian-networks.html#eq:defdmap">(3.3)</a>. Therefore, <span class="math inline">\(C\)</span> does not separate <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. This in turn implies that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent given <span class="math inline">\(C\)</span>, and since <span class="math inline">\(\Pi_A = { \varnothing}, \Pi_B = {\varnothing}\)</span>, and <span class="math inline">\(\Pi_C = {A,B}\)</span>, we have
 <span class="math display">\[\begin{equation}
     P(A,B,C) = P(C|A,B)P(A)P(B)
@@ -201,7 +211,11 @@ In any Bayesian network, the Markov blanket of a node <span class="math inline">
 <h2><span class="header-section-number">3.2</span> Static Bayesian Networks Modelling</h2>
 <p>Fitting a Bayesian Network is called learning and is performed in two different steps corresponding to model selection and parameter estimation.</p>
 <ol style="list-style-type: lower-roman">
-<li><em>structure learning</em> identifies the structure of the graph of the Bayesian network with the goal to result as close as possible in a minimal I-map of the dependence structure of the data. The algorithms fall in three categories: constraint-based, score-based and hybrid algorithms. Alternatively, the network structure can be built from domain knowledge and prior information on the data (white- and blacklisting specific arcs).</li>
+<li><em>structure learning</em> identifies the structure of the graph of the Bayesian network with the goal to result as close as possible in a minimal I-map of the dependence structure of the data.
+The classic methods were based on
+multiple conditional independence tests that result in a set of DAGs that encompass individual conditional independence relations or
+on a bayesian approach which searches for the DAG with the highest posterior probability by applying a bayesian scoring metric to the results of a search algorithm (Spirtes 1995).
+The algorithms fall in three categories: constraint-based, score-based and hybrid algorithms. Alternatively, the network structure can be built from domain knowledge and prior information on the data (white- and blacklisting specific arcs).</li>
 <li><em>parameter learning</em> implements the estimation of the parameters of the global distribution by efficiently estimating the parameters of the local distributions implied by the structure obtained in the previous step.</li>
 </ol>
 </div>
@@ -234,6 +248,16 @@ Now, we know the skeleton and the v-structures of the network.</p>
 <p>Third, we identify compelled arcs and orient them recursively to obtain the completed partially DAG (CPDAG) describing the equivalence class identified by the previous steps.</p>
 <p>The first two steps cannot be applied to any real-world problem because of its exponential number of possible conditional independence relationship. This led to the development of improved algorithms: <em>PC</em> (spirtes et al, 2001), <em>Grow-Shrink Markov blanket</em> (Margaritis, 2003), <em>Incremental Association</em> (Tsamardinos et al., 2003) and variations of those.
 They all (except PC) first learn the Markov blanket of each node in the network which simplifies the identification of neighbors of each node and hence also the computational complexity.</p>
+<div id="pc" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> PC</h3>
+<p>Original paper about PC: Spirtes, Glymour, and Scheines (1993)
+Is the well established, unsupervised method if no selection bias, no latent variables and only acyclic relations exist.
+The causal relations are detected through multiple conditional independence tests. The accuracy depends on how the type I error rate <span class="math inline">\(\alpha\)</span> is set a priori. Different methods were proposed on how to tune this hyperparameter automatically:
+Schwarz et al 1978 choose the model with the lowest BIC score by assuming a parametric model.
+Rathu et al, 2018 proposed a computationally intensive, non-parametric algorithm StARS which runs PC on multiple bootstrapped draws and outputs the <span class="math inline">\(\alpha\)</span> maximizing graph stability.
+OCTs uses cross-validation to evaluate the predictive accuracy of Markov boundaries which have to be unique (Biza et al., 2020). During the cross-validation step of OCTs an other parameter <span class="math inline">\(\alpha\)</span> is introduced.
+AutoPC runs PC twice for each <span class="math inline">\(\alpha\)</span> of a finite, user-specified set of reasonable choices of <span class="math inline">\(\alpha\)</span>. The second run is a variant of PC which conditions on subsets of parents from the partially DAG of the first run which will be less time intensive than the first run. Its accuracy is outstanding and the computational time is on the level of BIC for an increasing number of vertices (Strobl 2020).</p>
+</div>
 </div>
 <div id="score-based-structure-learning-algorithms" class="section level2">
 <h2><span class="header-section-number">3.4</span> Score-Based Structure Learning Algorithms</h2>
@@ -308,6 +332,11 @@ and is proportional by a factor <span class="math inline">\(2n\)</span> (<span c
   \end{equation}\]</span>
 In both cases, there are two ways to test the null hypothesis of independence. Either bey asymptotic <span class="math inline">\(\chi^{2}_{(R-1)(C-1)L}\)</span> distribution or the Monte Carlo permutation approach (Edwards (2000)). Alternatively, Fisher’s exact test and the shrinkage estimator for the mutual information defined by Hausser and Strimmer (2009) are possible.</li>
 </ul>
+<div id="network-scores" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> Network Scores</h3>
+<p>To score the goodness of a network representing the causal relationships of the variables is dependend on the context.</p>
+<p>If the data generation process is known, the resulting structure can be compared to the structure which generated the data (Spirtes 1995).
+Deep domain knowledge enables edge specific post-evaluation of the network and can reduce the search space by Black- and whitelisting causalities.</p>
 <p>Common network scores are the <em>Bayesian Dirichlet equivalent (BDe)</em> and the <em>Bayesian information criterion (BIC)</em>. BDe associates the posterior density with a uniform prior over both the space of the network structures and the parameters of each local distribution. The BIC is a penalized likelihood score defined as:
 <span class="math display">\[\begin{equation}
     BIC=\sum_{i=1}^{n} log P_{X_i}(X_i | \Pi_{X_i}) - \frac{d}{2}log(n)
@@ -327,6 +356,7 @@ An other option would be the mutual information test defined in Kullback (1968) 
     BIC=\sum_{i=1}^{n} log f_{X_i}(X_i | \Pi_{X_i}) - \frac{d}{2}log(n)
 \end{equation}\]</span>
 and the <em>Bayesian Gaussian equivalent (BGe)</em> score, the Wishart posterior density of the network associated with a uniform prior over both the space of the network structures and of the parameters of the local distributions.</p>
+</div>
 </div>
 <div id="parameter-learning" class="section level2">
 <h2><span class="header-section-number">3.7</span> Parameter Learning</h2>

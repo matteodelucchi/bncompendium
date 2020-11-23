@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Bayesian Network Compendium</title>
   <meta name="description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Bayesian Network Compendium" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Matteo Delucchi" />
 
 
-<meta name="date" content="2020-09-28" />
+<meta name="date" content="2020-11-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
 <span class="math inline">
 \(\newcommand{\ci}{\perp\!\!\!\perp}\)
 </span>
@@ -85,14 +87,19 @@
 <li class="chapter" data-level="3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html"><i class="fa fa-check"></i><b>3</b> Static Bayesian Networks</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#bayesian-networks-terminology"><i class="fa fa-check"></i><b>3.1</b> Bayesian Networks Terminology</a></li>
 <li class="chapter" data-level="3.2" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#static-bayesian-networks-modelling"><i class="fa fa-check"></i><b>3.2</b> Static Bayesian Networks Modelling</a></li>
-<li class="chapter" data-level="3.3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#constraint-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.3</b> Constraint-Based Structure Learning Algorithms</a></li>
+<li class="chapter" data-level="3.3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#constraint-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.3</b> Constraint-Based Structure Learning Algorithms</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#pc"><i class="fa fa-check"></i><b>3.3.1</b> PC</a></li>
+</ul></li>
 <li class="chapter" data-level="3.4" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#score-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.4</b> Score-Based Structure Learning Algorithms</a></li>
 <li class="chapter" data-level="3.5" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#hybrid-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.5</b> Hybrid Structure Learning Algorithms</a></li>
-<li class="chapter" data-level="3.6" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#choosing-distributions-conditional-independence-tests-and-network-scores"><i class="fa fa-check"></i><b>3.6</b> Choosing Distributions, Conditional Independence Tests, and Network Scores</a></li>
+<li class="chapter" data-level="3.6" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#choosing-distributions-conditional-independence-tests-and-network-scores"><i class="fa fa-check"></i><b>3.6</b> Choosing Distributions, Conditional Independence Tests, and Network Scores</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#network-scores"><i class="fa fa-check"></i><b>3.6.1</b> Network Scores</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#parameter-learning"><i class="fa fa-check"></i><b>3.7</b> Parameter Learning</a></li>
 <li class="chapter" data-level="3.8" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#discretization"><i class="fa fa-check"></i><b>3.8</b> Discretization</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="4" data-path="4-glosary.html"><a href="4-glosary.html"><i class="fa fa-check"></i><b>4</b> Glosary</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/delt/" target="blank">Matteo Delucchi</a></li>
 
@@ -116,7 +123,7 @@
 <div id="header">
 <h1 class="title">Bayesian Network Compendium</h1>
 <p class="author"><em>Matteo Delucchi</em></p>
-<p class="date"><em>2020-09-28</em></p>
+<p class="date"><em>2020-11-23</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered">
 <h1>Preface</h1>
