@@ -22,6 +22,8 @@ constraint-based-structure-learning-algorithms
 pc
 score-based-structure-learning-algorithms
 hybrid-structure-learning-algorithms
+coninuous-smooth-non-convex-algorithms
+structure-learning-metrics
 choosing-distributions-conditional-independence-tests-and-network-scores
 network-scores
 parameter-learning
