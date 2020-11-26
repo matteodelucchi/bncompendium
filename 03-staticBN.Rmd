@@ -180,6 +180,22 @@ These algorithms basically have two steps: (i) in the first *restrict* state, th
 
 In the Sparse Candidate Algorithm the two steps are repeated until there is no change in the network or the network score does not improve anymore. In the Max-Min Hill-Climbing algorithm, restrict and maximize are performed only once.
 
+## Coninuous, smooth non-convex algorithms
+NOTEARS (Zheng2018) 
+Bregman Method (Romain2020)
+
+## Structure learning metrics
+To compare a the output of a structure learning algorithm with the ground truth graph, we need to define first the error sources:  
+_M_: The number of missing edges compared to the ground truth skeleton.  
+_E_: The number of extra edges.  
+_R_: The number of reversed edges.  
+
+Based on those errors, different metrics can be defined (Romain et al. 2020):  
+_TP_: The number of True Positives represents the correctly detected edges.  
+_SHD_: The most common metric in structure learning is the Structural Hamming Distance $SHD = M+E+R$.  
+_FDR_: The false discovery rate can be defined as $FDR=(E+R)/p$ with $p$ being the number of edges.  
+_TPR_: The true positive rate with $TPR = TP/p$  
+
 ## Choosing Distributions, Conditional Independence Tests, and Network Scores
 There are two common cases for global and local distribution functions:
 
