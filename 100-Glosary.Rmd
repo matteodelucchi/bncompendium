@@ -8,3 +8,9 @@ _Latent Variable_: Variable that is inferred from other variables. Not directly 
 _Parameteric Model_: A statistical model that has all it's information represented in its parameters. Those are the only thing needed to predict future or unknown values.
 
 _Oracle Property_: An oracle knows the truth: it knows the true subset and is willing to act on it. The oracle property is that the asymptotic distribution of the estimator is the same as the asymptotic distribution of the MLE on only the true support. That is, the estimator adapts to knowing the true support without paying a price (in terms of the asymptotic distribution.)
+
+_NP-hardness_: Problems that have non-deterministic polynomial time complexity. I.e. Subset Sum Problem.
+
+_Frobenius Norm_: The norm of a matrix calculated under the root of the sum of all squared values. 
+
+_Trace_: The sum of the matrix elements on the main diagonal. Notation: $Tr(A)$.
