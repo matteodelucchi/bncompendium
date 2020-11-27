@@ -1,0 +1,23 @@
+# Structure Learning
+A Bayesian Network is a directed acyclic graph (DAG) due to the following constraints.  
+(TODO: list constraints)  
+
+Network structure learning from data is an NP-hard problem due to the acyclicity constraint (Zheng2018).
+Adapting the notation from Zheng et al. 2018, we assume $G(W)$ is a d-node graph with the weighted adjacency matrix $W$. We call the optimization score function $F: \mathbb{R}^{dxd} \rightarrow \mathbb{R}$. The traditional optimization problem can be formulated as  
+$$
+\begin{equation} 
+  \min_\underset{W \in \mathbb{R}^{dxd}} \; F(W) \\
+  G(W) \in DAGs
+  (\#eq:tradoptprob)
+\end{equation} 
+$$
+
+To reformulate @{eq:tradoptprob} in continuous form, we need to exactely characterize the acyclicity of the graphs with smooth function $h: \mathbb{R}^{dxd} \rightarrow \mathbb{R}$ over real matrices with all levels set at zero.
+$$
+\begin{equation} 
+  \min_\underset{W \in \mathbb{R}^{dxd}} \; F(W) \\
+  h(W) =0
+  (\#eq:newoptprob)
+\end{equation} 
+$$
+

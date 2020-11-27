@@ -162,6 +162,11 @@ _Genetic_ algorithms, mimic natural evolution through iteratively selecting the 
 _Simulated annealing_ performs a stochastic local search by accepting changes that increase the network score and allowing changes that decrease it with a probability inversely proportional to the score decrease. 
 Russel and Norvig (2009) provide comprehensive review of the heuristics.
 
+### Continuous, smooth non-convex algorithms
+The combinatorial optimization problem of structure learning in BNs makes it difficult to solve efficently.
+In NOTEARS (Zheng2018) the traditional combinatorial problem is transformed in a continuous formulation by a novel characterization of acyclicity that is smooth and exact. This allows the application of standard numerical algorithms to solve the problem effortless. 
+Bregman Method (Romain2020)
+
 ## Hybrid Structure Learning Algorithms
 They combine constraint-based and score-based algorithms to offset their weaknesses and produce reliable network structures in many situations. Well known members of this family are _Sparse Candidate algorithm_ by Friedman et al (1999b) and _Max-Min Hill-Climbing algorithm_ by Tsamardinos et al (2006). 
 
@@ -180,9 +185,7 @@ These algorithms basically have two steps: (i) in the first *restrict* state, th
 
 In the Sparse Candidate Algorithm the two steps are repeated until there is no change in the network or the network score does not improve anymore. In the Max-Min Hill-Climbing algorithm, restrict and maximize are performed only once.
 
-## Coninuous, smooth non-convex algorithms
-NOTEARS (Zheng2018) 
-Bregman Method (Romain2020)
+
 
 ## Structure learning metrics
 To compare a the output of a structure learning algorithm with the ground truth graph, we need to define first the error sources:  
