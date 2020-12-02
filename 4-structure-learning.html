@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | Bayesian Network Compendium</title>
+  <title>Chapter 4 Structure Learning | Bayesian Network Compendium</title>
   <meta name="description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | Bayesian Network Compendium" />
+  <meta property="og:title" content="Chapter 4 Structure Learning | Bayesian Network Compendium" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://matteodelucchi.github.io/bncompendium/" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="matteodelucchi/bncompendium" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Bayesian Network Compendium" />
+  <meta name="twitter:title" content="Chapter 4 Structure Learning | Bayesian Network Compendium" />
   
   <meta name="twitter:description" content="This compendium provides a gentle introduction on bayesian networks and it’s applications." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="4-structure-learning.html"/>
-<link rel="next" href="5-glosary.html"/>
+<link rel="prev" href="3-static-bayesian-networks.html"/>
+<link rel="next" href="references.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -124,8 +124,27 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="structure-learning" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Structure Learning</h1>
+<p>A Bayesian Network is a directed acyclic graph (DAG) due to the following constraints.<br />
+(TODO: list constraints)</p>
+<p>Network structure learning from data is an NP-hard problem due to the acyclicity constraint (Zheng2018).
+Adapting the notation from Zheng et al. 2018, we assume <span class="math inline">\(G(W)\)</span> is a d-node graph with the weighted adjacency matrix <span class="math inline">\(W\)</span>. We call the optimization score function <span class="math inline">\(F: \mathbb{R}^{dxd} \rightarrow \mathbb{R}\)</span>. The traditional optimization problem can be formulated as<br />
+<span class="math display" id="eq:tradoptprob">\[
+\begin{equation} 
+  \min_\underset{W \in \mathbb{R}^{dxd}} \; F(W) \\
+  G(W) \in DAGs
+  \tag{4.1}
+\end{equation} 
+\]</span></p>
+<p>To reformulate @{eq:tradoptprob} in continuous form, we need to exactely characterize the acyclicity of the graphs with smooth function <span class="math inline">\(h: \mathbb{R}^{dxd} \rightarrow \mathbb{R}\)</span> over real matrices with all levels set at zero.
+<span class="math display" id="eq:newoptprob">\[
+\begin{equation} 
+  \min_\underset{W \in \mathbb{R}^{dxd}} \; F(W) \\
+  h(W) =0
+  \tag{4.2}
+\end{equation} 
+\]</span></p>
 
 </div>
             </section>
@@ -133,8 +152,8 @@
           </div>
         </div>
       </div>
-<a href="4-structure-learning.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="5-glosary.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-static-bayesian-networks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

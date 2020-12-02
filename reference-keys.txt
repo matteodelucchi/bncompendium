@@ -10,6 +10,8 @@ def:markovblanket
 thm:alginductivecausation
 thm:alghc
 thm:algsparsecan
+eq:tradoptprob
+eq:newoptprob
 causation-and-inference
 simpsonsparadox
 graphtheory
@@ -21,11 +23,12 @@ static-bayesian-networks-modelling
 constraint-based-structure-learning-algorithms
 pc
 score-based-structure-learning-algorithms
+continuous-smooth-non-convex-algorithms
 hybrid-structure-learning-algorithms
-coninuous-smooth-non-convex-algorithms
 structure-learning-metrics
 choosing-distributions-conditional-independence-tests-and-network-scores
 network-scores
 parameter-learning
 discretization
+structure-learning
 glosary

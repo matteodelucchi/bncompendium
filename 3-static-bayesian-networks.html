@@ -24,7 +24,7 @@
 <meta name="author" content="Matteo Delucchi" />
 
 
-<meta name="date" content="2020-11-26" />
+<meta name="date" content="2020-12-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="2-graphtheory.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="4-structure-learning.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -90,18 +90,20 @@
 <li class="chapter" data-level="3.3" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#constraint-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.3</b> Constraint-Based Structure Learning Algorithms</a><ul>
 <li class="chapter" data-level="3.3.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#pc"><i class="fa fa-check"></i><b>3.3.1</b> PC</a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#score-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.4</b> Score-Based Structure Learning Algorithms</a></li>
+<li class="chapter" data-level="3.4" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#score-based-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.4</b> Score-Based Structure Learning Algorithms</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#continuous-smooth-non-convex-algorithms"><i class="fa fa-check"></i><b>3.4.1</b> Continuous, smooth non-convex algorithms</a></li>
+</ul></li>
 <li class="chapter" data-level="3.5" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#hybrid-structure-learning-algorithms"><i class="fa fa-check"></i><b>3.5</b> Hybrid Structure Learning Algorithms</a></li>
-<li class="chapter" data-level="3.6" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#coninuous-smooth-non-convex-algorithms"><i class="fa fa-check"></i><b>3.6</b> Coninuous, smooth non-convex algorithms</a></li>
-<li class="chapter" data-level="3.7" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#structure-learning-metrics"><i class="fa fa-check"></i><b>3.7</b> Structure learning metrics</a></li>
-<li class="chapter" data-level="3.8" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#choosing-distributions-conditional-independence-tests-and-network-scores"><i class="fa fa-check"></i><b>3.8</b> Choosing Distributions, Conditional Independence Tests, and Network Scores</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#network-scores"><i class="fa fa-check"></i><b>3.8.1</b> Network Scores</a></li>
+<li class="chapter" data-level="3.6" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#structure-learning-metrics"><i class="fa fa-check"></i><b>3.6</b> Structure learning metrics</a></li>
+<li class="chapter" data-level="3.7" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#choosing-distributions-conditional-independence-tests-and-network-scores"><i class="fa fa-check"></i><b>3.7</b> Choosing Distributions, Conditional Independence Tests, and Network Scores</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#network-scores"><i class="fa fa-check"></i><b>3.7.1</b> Network Scores</a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#parameter-learning"><i class="fa fa-check"></i><b>3.9</b> Parameter Learning</a></li>
-<li class="chapter" data-level="3.10" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#discretization"><i class="fa fa-check"></i><b>3.10</b> Discretization</a></li>
+<li class="chapter" data-level="3.8" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#parameter-learning"><i class="fa fa-check"></i><b>3.8</b> Parameter Learning</a></li>
+<li class="chapter" data-level="3.9" data-path="3-static-bayesian-networks.html"><a href="3-static-bayesian-networks.html#discretization"><i class="fa fa-check"></i><b>3.9</b> Discretization</a></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="4-structure-learning.html"><a href="4-structure-learning.html"><i class="fa fa-check"></i><b>4</b> Structure Learning</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="4" data-path="4-glosary.html"><a href="4-glosary.html"><i class="fa fa-check"></i><b>4</b> Glosary</a></li>
+<li class="chapter" data-level="5" data-path="5-glosary.html"><a href="5-glosary.html"><i class="fa fa-check"></i><b>5</b> Glosary</a></li>
 <li class="divider"></li>
 <li><a href="https://www.zhaw.ch/en/about-us/person/delt/" target="blank">Matteo Delucchi</a></li>
 
@@ -289,6 +291,12 @@ AutoPC runs PC twice for each <span class="math inline">\(\alpha\)</span> of a f
 <p><em>Genetic</em> algorithms, mimic natural evolution through iteratively selecting the “fittest” model and the hybridization of their characteristics. The search space is explored through combining the structure of two networks (crossover) and introducing random alterations (mutation stochastic operators).</p>
 <p><em>Simulated annealing</em> performs a stochastic local search by accepting changes that increase the network score and allowing changes that decrease it with a probability inversely proportional to the score decrease.
 Russel and Norvig (2009) provide comprehensive review of the heuristics.</p>
+<div id="continuous-smooth-non-convex-algorithms" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Continuous, smooth non-convex algorithms</h3>
+<p>The combinatorial optimization problem of structure learning in BNs makes it difficult to solve efficently.
+In NOTEARS (Zheng2018) the traditional combinatorial problem is transformed in a continuous formulation by a novel characterization of acyclicity that is smooth and exact. This allows the application of standard numerical algorithms to solve the problem effortless.
+Bregman Method (Romain2020)</p>
+</div>
 </div>
 <div id="hybrid-structure-learning-algorithms" class="section level2">
 <h2><span class="header-section-number">3.5</span> Hybrid Structure Learning Algorithms</h2>
@@ -312,13 +320,8 @@ Russel and Norvig (2009) provide comprehensive review of the heuristics.</p>
 <p>These algorithms basically have two steps: (i) in the first <em>restrict</em> state, the candidate set for the parents of each node <span class="math inline">\(X_i\)</span> is reduced from the whole node set <span class="math inline">\(V\)</span> to a smaller set <span class="math inline">\(C_i \subset V\)</span> of nodes whose behavior has been shown to be related in some way to that of <span class="math inline">\(X_i\)</span> resulting in a smaller and more regular search space. Then the network is searched that (ii) <em>maximizes</em> a given score function, subject to the constraints imposed by the <span class="math inline">\(C_i\)</span> sets.</p>
 <p>In the Sparse Candidate Algorithm the two steps are repeated until there is no change in the network or the network score does not improve anymore. In the Max-Min Hill-Climbing algorithm, restrict and maximize are performed only once.</p>
 </div>
-<div id="coninuous-smooth-non-convex-algorithms" class="section level2">
-<h2><span class="header-section-number">3.6</span> Coninuous, smooth non-convex algorithms</h2>
-<p>NOTEARS (Zheng2018)
-Bregman Method (Romain2020)</p>
-</div>
 <div id="structure-learning-metrics" class="section level2">
-<h2><span class="header-section-number">3.7</span> Structure learning metrics</h2>
+<h2><span class="header-section-number">3.6</span> Structure learning metrics</h2>
 <p>To compare a the output of a structure learning algorithm with the ground truth graph, we need to define first the error sources:<br />
 <em>M</em>: The number of missing edges compared to the ground truth skeleton.<br />
 <em>E</em>: The number of extra edges.<br />
@@ -330,7 +333,7 @@ Bregman Method (Romain2020)</p>
 <em>TPR</em>: The true positive rate with <span class="math inline">\(TPR = TP/p\)</span></p>
 </div>
 <div id="choosing-distributions-conditional-independence-tests-and-network-scores" class="section level2">
-<h2><span class="header-section-number">3.8</span> Choosing Distributions, Conditional Independence Tests, and Network Scores</h2>
+<h2><span class="header-section-number">3.7</span> Choosing Distributions, Conditional Independence Tests, and Network Scores</h2>
 <p>There are two common cases for global and local distribution functions:</p>
 <ul>
 <li><em>Multinomial variables:</em> are used for categorical/discrete data sets (discrete case). Global and local distribution are multinomial. Local distributions are represented in conditional probability tables (CPTs). This is the most common assumption and corresponding Bayesian networks are referred to as discrete Bayesian networks.</li>
@@ -352,7 +355,7 @@ and is proportional by a factor <span class="math inline">\(2n\)</span> (<span c
 In both cases, there are two ways to test the null hypothesis of independence. Either bey asymptotic <span class="math inline">\(\chi^{2}_{(R-1)(C-1)L}\)</span> distribution or the Monte Carlo permutation approach (Edwards (2000)). Alternatively, Fisher’s exact test and the shrinkage estimator for the mutual information defined by Hausser and Strimmer (2009) are possible.</li>
 </ul>
 <div id="network-scores" class="section level3">
-<h3><span class="header-section-number">3.8.1</span> Network Scores</h3>
+<h3><span class="header-section-number">3.7.1</span> Network Scores</h3>
 <p>To score the goodness of a network representing the causal relationships of the variables is dependend on the context.</p>
 <p>If the data generation process is known, the resulting structure can be compared to the structure which generated the data (Spirtes 1995).
 Deep domain knowledge enables edge specific post-evaluation of the network and can reduce the search space by Black- and whitelisting causalities.</p>
@@ -378,7 +381,7 @@ and the <em>Bayesian Gaussian equivalent (BGe)</em> score, the Wishart posterior
 </div>
 </div>
 <div id="parameter-learning" class="section level2">
-<h2><span class="header-section-number">3.9</span> Parameter Learning</h2>
+<h2><span class="header-section-number">3.8</span> Parameter Learning</h2>
 <p>Given the (learned) structure of the network the task of estimating and updating the parameters of the global distribution is greatly simplified by the application of the Markov property.</p>
 <p>In dynamic programming the <em>Curse of dimensionality</em> is a phenomena that can be observed when the dimensionality increases, the volume of space increases so fast, that the data becomes sparse. In the context of parameter learning, we observe this phenomena because each local distribution has a comparatively small number of parameters to estimate from the sample and estimates are more accurate due to the better ratio between the size of parameter space and the sample size. There exist two approaches to estimate the parameters: <em>maximum likelihood estimation</em> and _Bayesian estimation}.</p>
 <p>The number of parameters of the global distribution is the sum of the number of parameters of the local distributions. To uniquely identify the global distribution not all parameters of the local distributions are required. Because of the conditional independence relationships are encoded in the network structure, large parts of the parameters space are fixed.
@@ -386,7 +389,7 @@ For example, in Gaussian Bayesian networks, partial correlation coefficients inv
 <p>It is, however, common that the sample sizes are much smaller than the number of variables included in the model (i.e. in high-throughput biological data: few ten or hundred observations and thousands of genes). This setting is called “small <span class="math inline">\(n\)</span>, large <span class="math inline">\(p\)</span>”, estimates have a high variability unless particular care is taken in both structure and parameter learnings.</p>
 </div>
 <div id="discretization" class="section level2">
-<h2><span class="header-section-number">3.10</span> Discretization</h2>
+<h2><span class="header-section-number">3.9</span> Discretization</h2>
 <p>To facilitate learning Bayesian networks from mixed data, we can convert all continuous variables to discrete ones ( <em>discretization</em> or <em>binning</em> ). This completely sidesteps the problem of defining a probabilistic model for the data.
 Discretization is also applied when continuous data violates normality (skewness, heavy tailes, etc.). The discretization intervals (bins) can be choosen in different ways. Often it makes sense to use prior knowledge on the data to define the intervals for each variable to different real-world scenarios (pollutant concentration: absent, dangerous, lethal; age classes: child, adult elderly). This is however not always possible and heuristical methods (Sturges, Freedman-Diaconis or Scott rules) offer a feasible possibility.
 To reduce information loss and balance the accuracy, the number of intervals and boundaries should be choosen one variable at a time and beofre the network structure has been learned (kohavi and Sahami, 1996, Hertemink 2001).
@@ -409,7 +412,7 @@ All these straategies represent different trade-offs between teh accuracy of the
         </div>
       </div>
 <a href="2-graphtheory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-structure-learning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
